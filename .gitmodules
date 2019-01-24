@@ -1,0 +1,3 @@
+[submodule "Restricted-Dubins-Curves"]
+	path = Restricted-Dubins-Curves
+	url = https://github.com/plymouth-research/Restricted-Dubins-Curves.git
