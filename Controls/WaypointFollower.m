@@ -1,4 +1,4 @@
-function [ u, waypoints ] = WaypointFollower(boat, wind, waypoints)
+function [ u, waypoints, q ] = WaypointFollower(boat, wind, waypoints)
 %WAYPOINTFOLLOWER Summary of this function goes here
 %   Detailed explanation goes here
 q = 1;
@@ -21,7 +21,7 @@ end
 
 heading = atan2(toWaypointn(2),toWaypointn(1));
 
-%[heading, q] = TackingStrategy(boat, q, heading, wind, 10);
+%[heading, q] = TackingStrategy(boat, q, 0, heading, wind, 10);
 
 if(cos(boat(3) - heading) >= 0)
     rudder = max_rudder*sin(boat(3) - heading);

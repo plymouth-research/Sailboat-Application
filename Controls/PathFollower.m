@@ -1,6 +1,6 @@
 function [ u, path ] = PathFollower( boat, wind, path, P)
 if nargin < 4
-     P = 1.5;
+     P = 2.5;
 end
 %PATHFOLLOWER Summary of this function goes here
 %   Detailed explanation goes here
@@ -10,7 +10,7 @@ max_rudder = pi/3;
 A = repmat(boat(1:2)',size(path,1),1) - path(:,1:2);
 norms = sum(A.^2,2);
 iclosest = find(norms == min(norms));
-closest = path(iclosest(1),:);
+closest = path(iclosest(1)+2,:);
 line = [closest(1)+cos(closest(3)) closest(2)+sin(closest(3)) 0] - closest;
 
 dist = boat(1:2)-closest(1:2)';
@@ -24,7 +24,7 @@ else
     rudder = max_rudder*sign(sin(boat(3) - heading));
 end
 
-sail = abs(pi/2*(cos(wind(1)-heading)+1)/2);
+sail = abs(pi/3*(cos(wind(1)-heading)+1)/2);
 %sail = pi/4*(1-sin(boat(3)));
 
 u=[rudder;sail];
